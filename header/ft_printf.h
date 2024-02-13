@@ -6,7 +6,7 @@
 /*   By: vodebunm <vodebunm@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 03:07:54 by vodebunm          #+#    #+#             */
-/*   Updated: 2024/02/13 05:45:10 by vodebunm         ###   ########.fr       */
+/*   Updated: 2024/02/13 06:31:36 by vodebunm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include "libft.h"
+# include "./header/libft.h"
 
 int	ft_printf(const char *s, ...);
 int	ft_str_printf(va_list list);
