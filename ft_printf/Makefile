@@ -6,7 +6,7 @@
 #    By: vodebunm <vodebunm@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 03:02:11 by vodebunm          #+#    #+#              #
-#    Updated: 2024/02/14 01:06:37 by vodebunm         ###   ########.fr        #
+#    Updated: 2024/02/14 03:08:50 by vodebunm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = libftprintf.a
 LIBFTNAME = libft.a
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
-LIBFTDIR = ./Libft
+LIBFTDIR = ./libft
 RM = rm -f
 
 # List of source files

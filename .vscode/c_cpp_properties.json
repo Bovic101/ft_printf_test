@@ -4,7 +4,7 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/Libft <-libft.h"
+                "${workspaceFolder}/Libft"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",
