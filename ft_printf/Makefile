@@ -6,7 +6,7 @@
 #    By: vodebunm <vodebunm@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 03:02:11 by vodebunm          #+#    #+#              #
-#    Updated: 2024/02/14 03:08:50 by vodebunm         ###   ########.fr        #
+#    Updated: 2024/02/14 03:27:16 by vodebunm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 makelibft:
-		@make -C $(LIBFTDIR)
+		$(MAKE) -C $(LIBFTDIR)
 		@cp $(LIBFTDIR)/$(LIBFTNAME)
 		@mv $(LIBFTNAME) $(NAME)
 $(NAME): makelibft $(OBJS)
@@ -41,8 +41,8 @@ clean:
 
 # Rule to clean everything
 fclean: 
-	@rm -f $(NAME)
-	@cd $(LIBFTDIR) && make fclean
+	$(MAKE) fclean -C ./libft
+	$(RM) $(NAME)
 
 # Rule to recompile
 re: fclean all
