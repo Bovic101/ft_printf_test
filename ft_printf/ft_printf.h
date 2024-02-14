@@ -6,17 +6,17 @@
 /*   By: vodebunm <vodebunm@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 03:07:54 by vodebunm          #+#    #+#             */
-/*   Updated: 2024/02/13 06:31:36 by vodebunm         ###   ########.fr       */
+/*   Updated: 2024/02/14 02:48:22 by vodebunm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
+# include "./Libft/libft.h"
 # include <stdarg.h>
-# include <stdlib.h>
 # include <stdio.h>
-# include "./header/libft.h"
+# include <stdlib.h>
 
 int	ft_printf(const char *s, ...);
 int	ft_str_printf(va_list list);

@@ -6,51 +6,43 @@
 #    By: vodebunm <vodebunm@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 03:02:11 by vodebunm          #+#    #+#              #
-#    Updated: 2024/02/13 06:36:26 by vodebunm         ###   ########.fr        #
+#    Updated: 2024/02/14 01:06:37 by vodebunm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Library Name
 NAME = libftprintf.a
-CC = gcc
+LIBFTNAME = libft.a
+CC = cc
+CFLAGS = -Wall -Werror -Wextra
+LIBFTDIR = ./Libft
+RM = rm -f
+
 # List of source files
-SRCS = ft_characater_printf.c \
-	ft_printf/ft_conversion_specifier.c \
-	ft_printf/ft_hexaconvert_pointer.c \
-	ft_printf/ft_hexaconvert_printf.c \
-	ft_printf/ft_hexaconvert_up_printf.c \
-	ft_printf/ft_int_dec_number_print.c \
-	ft_printf/ft_pointer_printf.c \
-	ft_printf/ft_printf.c \
-	ft_printf/ft_str_printf.c \
-	
-OBJ_DEST = mv *.o ft_printf
+SRCS = ft_characater_printf.c ft_conversion_specifier.c ft_hexaconvert_pointer.c ft_hexaconvert_printf.c \
+			ft_hexaconvert_up_printf.c ft_int_dec_number_print.c ft_pointer_printf.c ft_printf.c ft_str_printf.c \
+
 OBJS = $(SRCS:.c=.o)
-
-#List of Bonus file
-
-CFLAGS = -Wall -Wextra -Werror
-
-RM 		= rm -f
 
 # All Rules
 # Rule to make the library
 all: $(NAME)
-$(NAME): $(OBJS)
-	$(MAKE) -C ./libft
-	cp libft/libft.a $(NAME)
-	$(CC) $(CFLAGS) $(SRCS)
-	$(OBJ_DEST)
-	ar rcs $(NAME) $(OBJS)
 
+makelibft:
+		@make -C $(LIBFTDIR)
+		@cp $(LIBFTDIR)/$(LIBFTNAME)
+		@mv $(LIBFTNAME) $(NAME)
+$(NAME): makelibft $(OBJS)
+		@ar -r $(NAME) $(OBJS)
+		
 clean:
-	$(MAKE) clean -C ./libft
-	rm -f $(OBJS) 
+	@cd $(LIBFTDIR) && make clean
+	@rm -f $(OBJS) 
 
 # Rule to clean everything
 fclean: 
-	$(MAKE) fclean -C ./libft
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@cd $(LIBFTDIR) && make fclean
 
 # Rule to recompile
 re: fclean all
