@@ -1,42 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_int_dec_number_print.c                          :+:      :+:    :+:   */
+/*   ft_calculate_digit_base.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vodebunm <vodebunm@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 21:19:29 by vodebunm          #+#    #+#             */
-/*   Updated: 2024/02/16 23:33:03 by vodebunm         ###   ########.fr       */
+/*   Created: 2024/02/16 22:46:41 by vodebunm          #+#    #+#             */
+/*   Updated: 2024/02/16 23:00:22 by vodebunm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static void	ft_putnum(size_t n)
+//calculate the number of digits when represented in a given base (num)
+int	ft_calculate_digit_base(size_t n, int num)
 {
-	if (n > 9)
-	{
-		ft_putnum(n / 10);
-		ft_putnum(n % 10);
-	}
-	if (n < 10)
-	{
-		ft_putchar_fd(n + 48, 1);
-	}
-}
+	int	counter;
 
-int	ft_int_dec_number_print(long long int n)
-{
-	int	count;
-
-	count = 0;
-	if (n < 0)
+	if (n == 0)
 	{
-		ft_putchar_fd('-', 1);
-		n = -n;
-		count++;
+		return (1);
 	}
-	ft_putnum(n);
-	count += ft_calculate_digit_base(n, 10);
-	return (count);
+	counter = 0;
+	while (n > 0)
+	{
+		n = n / num;
+		counter++;
+	}
+	return (counter);
 }
