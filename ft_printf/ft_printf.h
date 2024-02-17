@@ -6,14 +6,14 @@
 /*   By: vodebunm <vodebunm@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 03:07:54 by vodebunm          #+#    #+#             */
-/*   Updated: 2024/02/16 23:47:00 by vodebunm         ###   ########.fr       */
+/*   Updated: 2024/02/17 03:28:21 by vodebunm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "../libft/libft.h"
+# include "./libft/libft.h"
 # include <stdarg.h>
 # include <stddef.h>
 # include <stdio.h>

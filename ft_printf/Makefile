@@ -6,7 +6,7 @@
 #    By: vodebunm <vodebunm@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 03:02:11 by vodebunm          #+#    #+#              #
-#    Updated: 2024/02/16 23:50:25 by vodebunm         ###   ########.fr        #
+#    Updated: 2024/02/17 03:38:57 by vodebunm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,14 +14,17 @@
 NAME = libftprintf.a
 LIBFTNAME = libft.a
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
-LIBFTDIR = ../libft
+CFLAGS = -Wall -Werror -Wextra -Iheaders -I . -c
+LIBFTDIR = ./libft
+OBJDIR = ./ft_printf
 RM = rm -f
+
 
 # List of source files
 SRCS = ft_characater_printf.c ft_conversion_specifier.c ft_calculate_digit_base.c\
 			ft_int_dec_number_print.c ft_pointer_printf.c ft_printf.c ft_str_printf.c \
 
+OBJ_DEST = mv *.o $(OBJDIR)
 
 OBJS = $(SRCS:.c=.o)
 
@@ -29,19 +32,22 @@ OBJS = $(SRCS:.c=.o)
 # Rule to make the library
 all: $(NAME)
 
+$(NAME): makelibft
+		$(CC) $(CFLAGS) $(SRCS)
+		$(OBJ_DEST)
+		@ar -rcs $@ $(OBJS)
+
 makelibft:
-		$(MAKE) -C $(LIBFTDIR)
-		@cp ../libft/libft.a $(NAME)
-$(NAME): makelibft $(OBJS)
-		@ar -r $(NAME) $(OBJS)
-		
+		$(MAKE) clean -C $(LIBFTDIR)
+		$(RM) -r $(OBJDIR)
+
 clean:
-	@cd $(LIBFTDIR) && make clean
-	@rm -f $(OBJS) 
+	$(MAKE) clean -C $(LIBFTDIR)
+	@$(RM) $(addprefix $(OBJDIR)/, $(OBJS))
 
 # Rule to clean everything
-fclean: 
-	$(MAKE) fclean -C ../libft
+fclean: clean
+	$(MAKE) fclean -C $(LIBFTDIR)
 	$(RM) $(NAME)
 
 # Rule to recompile
